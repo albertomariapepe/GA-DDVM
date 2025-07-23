@@ -1,4 +1,4 @@
-# GA-DDVM: Geometric Algebra for Diffusion in Optical Flow ✨📐
+# Geometric Inductive Priors in Diffusion-Based Optical Flow Estimation 🌀✨
 
 **🚧 Preliminary Release**  
 This repository contains the code for **GA-DDVM**, a Geometric Algebra-based variant of the Denoising Diffusion Vision Model (DDVM), introduced in our paper: **_Geometric Inductive Priors in Diffusion-Based Optical Flow Estimation_**, presented at the Beyond Euclidean Workshop, in conjunction with ICCV 2025 in Honolulu, HI.
