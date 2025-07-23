@@ -1,0 +1,23 @@
+name: AZUREML_env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.5
+  # Linting
+  - flake8
+  - flake8-bugbear
+  - flake8-builtins
+  - flake8-docstrings
+  - flake8-import-order
+  - flake8-quotes
+  - flake8-self
+  - flake8-unused-arguments
+  - pep8-naming
+  # Type checking
+  - mypy
+  # Notebooks
+  - ipykernel
+  # Azure
+  - pip
+  - artifacts-keyring
+  - wheel

@@ -1,0 +1,9 @@
+imagen-pytorch
+accelerate==0.21.0
+tensorflow-cpu==2.13.0
+tensorflow-addons==0.21.0
+diffusers[torch]==0.20.2
+tensorboard
+opencv-python
+ml-collections
+scipy

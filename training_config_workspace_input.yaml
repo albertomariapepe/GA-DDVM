@@ -1,0 +1,33 @@
+experiment_name: mnist
+aml_config: a100x4.yaml
+requirements_file: requirements.txt
+gpu_count: 4
+cmd_line:
+  python train.py fit
+  --data MNISTDataModule
+  --data.data_dir ${{inputs.training_dataset}}
+  --model LitMNIST
+  --ckpt_path ${{inputs.checkpoint}}
+  --trainer.max_epochs 6
+  --trainer.logger CSVLogger
+  --trainer.logger.save_dir logs/
+  --trainer.logger+ AmlLogger
+  --trainer.callbacks OnnxExporter
+  --trainer.callbacks.onnx_file ${{outputs.mnist_classifier}}/model/mnist_classifier.onnx
+
+input_data:
+  - name: checkpoint
+    model_asset:
+      name: mnist_classifier_checkpoint
+      version: "1"
+  - name: training_dataset
+    blob_folder:
+      container:
+        subscription_id: XXXX
+        resource_group: XXXX
+        storage_account: XXXX
+        name: publicdatasets
+      path: torchvision.datasets
+
+output_data:
+  - name: mnist_classifier

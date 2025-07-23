@@ -1,0 +1,33 @@
+experiment_name: open-DDVM
+aml_config: a100x4.yaml
+requirements_file: requirements.txt
+gpu_count: 4
+code: 
+cmd_line:
+  python main.py
+  --num_epochs 3
+  --batch_size 64
+  --latent_dims 2
+  --device cuda
+  --data_dir ${{inputs.training_dataset}}
+  --output_dir ${{outputs.mnist_classifier}}
+
+input_data:
+  - name: training_dataset
+    blob_folder:
+      container:
+        subscription_id: XXXX
+        resource_group: shared-rg
+        storage_account: assharedw3data
+        name: publicdatasets
+      path: torchvision.datasets
+
+output_data:
+  - name: mnist_classifier
+    blob_folder:
+      container:
+        subscription_id: XXXX
+        resource_group: shared-rg
+        storage_account: assharedw3data
+        name: sampleoutputs
+      path: mnist_classifier
